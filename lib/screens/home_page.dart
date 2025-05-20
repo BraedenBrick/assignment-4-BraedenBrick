@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Image(image: NetworkImage(urlPinkRoseImage)),
+            Image(
+              image: AssetImage('images/rose-pink.jpg'),
+            ),
             Text(
               'Pink Rose',
               style: TextStyle(
@@ -42,21 +44,18 @@ class HomePage extends StatelessWidget {
   }
 
   String getMessage() {
-    String message = 'Happy ${getDayType()}!';
+    String message = 'Happy ${getMonthName()}!';
     return message;
   }
 
-  String getDayType() {
-    String dayType;
-    int currentDayOfWeekNum;
+  String getMonthName() {
+    String monthName;
     DateTime date = DateTime.now();
-    currentDayOfWeekNum = date.weekday;
+    int currentMonthNum = date.month;
+    List<String> monthStrArr = ['January', 'February', 'March', 'April', 'May',
+    'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    monthName = monthStrArr[currentMonthNum - 1];
 
-    if (currentDayOfWeekNum < 6) {
-      dayType = "weekday";
-    } else {
-      dayType = "weekend";
-    }
-    return dayType;
+    return monthName;
   }
 }
